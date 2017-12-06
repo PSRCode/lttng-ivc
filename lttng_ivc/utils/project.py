@@ -231,7 +231,7 @@ class Project(object):
         env = self.get_env()
 
         with open(env_file, 'w') as tmp:
-            tmp.write(self.get_env)
+            tmp.write(env)
 
         os.chdir(self.source_path)
         args = ['./configure']
