@@ -24,6 +24,7 @@ import git
 import subprocess
 import logging
 import lttng_ivc.settings as Settings
+import pprint
 
 from lttng_ivc.utils.utils import sha256_checksum
 from lttng_ivc.utils.utils import find_dir, find_file
@@ -231,7 +232,7 @@ class Project(object):
         env = self.get_env()
 
         with open(env_file, 'w') as tmp:
-            tmp.write(env)
+            pprint.pprint(env, stream=tmp)
 
         os.chdir(self.source_path)
         args = ['./configure']
