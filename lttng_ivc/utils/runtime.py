@@ -176,6 +176,7 @@ class Runtime(object):
         if classpath:
             env['CLASSPATH'] = classpath
 
+        env["LD_DEBUG"] = "all"
 
         tmp_id = self._run_command_count
         self._run_command_count += 1
