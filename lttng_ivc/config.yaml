@@ -23,6 +23,10 @@ lttng-tools:
           url: https://github.com/lttng/lttng-tools
           ref: stable-2.12
           precook_deps: [lttng-ust-2.12]
+        - marker: lttng-tools-2.13
+          url: https://github.com/lttng/lttng-tools
+          ref: master
+          precook_deps: [lttng-ust-2.13]
 
 lttng-ust:
         - marker: lttng-ust-2.7
@@ -43,6 +47,9 @@ lttng-ust:
         - marker: lttng-ust-2.12
           url: https://github.com/lttng/lttng-ust
           ref: stable-2.12
+        - marker: lttng-ust-2.13
+          url: https://github.com/lttng/lttng-ust
+          ref: master
 
 
 lttng-modules:
