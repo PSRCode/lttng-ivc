@@ -30,6 +30,9 @@ import lttng_ivc.utils.runtime as Run
 import lttng_ivc.settings as Settings
 
 """
+Basic testing scenario where an app build against
+lttng-ust 2.x is run inside a runtime for version 2.(x+1) or 2.(x-1) in
+cases where we expect known features.
 
 FC: Fully Compatible
 BC: Feature of the smallest version number will works.
