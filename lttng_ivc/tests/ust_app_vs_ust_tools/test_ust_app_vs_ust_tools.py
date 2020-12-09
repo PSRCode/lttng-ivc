@@ -42,16 +42,17 @@ that the event registration is expected to fail.
 +------------------------------------------------------------------------------+
 |              LTTng UST control protocol compatibility matrix                 |
 |   (between applications and tools linked on LTTng UST and liblttng-ust-ctl)  |
-+--------------------------+------------+------------+------------+------------+------------+------------+
-| LTTng UST / LTTng Tools  | 2.7 (6.0)  | 2.8 (6.1)  | 2.9 (7.1)  | 2.10 (7.2) | 2.11 (8.0) | 2.12 (8.1) |
-+--------------------------+------------+------------+------------+------------+------------+------------+
-| 2.7 (6.0)                | FC         | BC         | TU         | TU         | TU         | TU         |
-| 2.8 (6.1)                | BC         | FC         | TU         | TU         | TU         | TU         |
-| 2.9 (7.1)                | TU         | TU         | FC         | BC         | TU         | TU         |
-| 2.10 (7.2)               | TU         | TU         | BC         | FC         | TU         | TU         |
-| 2.11 (8.0)               | TU         | TU         | TU         | TU         | FC         | BC         |
-| 2.12 (8.1)               | TU         | TU         | TU         | TU         | BC         | FC         |
-+--------------------------+------------+------------+------------+------------+------------+------------+
++--------------------------+------------+------------+------------+------------+------------+------------+------------+
+| LTTng UST / LTTng Tools  | 2.7 (6.0)  | 2.8 (6.1)  | 2.9 (7.1)  | 2.10 (7.2) | 2.11 (8.0) | 2.12 (8.1) | 2.12 (9.0) |
++--------------------------+------------+------------+------------+------------+------------+------------+------------+
+| 2.7 (6.0)                | FC         | BC         | TU         | TU         | TU         | TU         | TU         |
+| 2.8 (6.1)                | BC         | FC         | TU         | TU         | TU         | TU         | TU         |
+| 2.9 (7.1)                | TU         | TU         | FC         | BC         | TU         | TU         | TU         |
+| 2.10 (7.2)               | TU         | TU         | BC         | FC         | TU         | TU         | TU         |
+| 2.11 (8.0)               | TU         | TU         | TU         | TU         | FC         | BC         | TU         |
+| 2.12 (8.1)               | TU         | TU         | TU         | TU         | BC         | FC         | TU         |
+| 2.13 (9.0)               | TU         | TU         | TU         | TU         | TU         | TU         | FC         |
++--------------------------+------------+------------+------------+------------+------------+------------+------------+
 
 Version number of this API is defined in include/lttng/ust-abi.h of lttng-ust project
 
@@ -72,36 +73,49 @@ test_matrix_tracing_available = [
     ("lttng-ust-2.7", "lttng-tools-2.10", "Unsupported"),
     ("lttng-ust-2.7", "lttng-tools-2.11", "Unsupported"),
     ("lttng-ust-2.7", "lttng-tools-2.12", "Unsupported"),
+    ("lttng-ust-2.7", "lttng-tools-2.13", "Unsupported"),
     ("lttng-ust-2.8", "lttng-tools-2.7", "Unsupported version"),
     ("lttng-ust-2.8", "lttng-tools-2.8", "Success"),
     ("lttng-ust-2.8", "lttng-tools-2.9", "Unsupported"),
     ("lttng-ust-2.8", "lttng-tools-2.10", "Unsupported"),
     ("lttng-ust-2.8", "lttng-tools-2.11", "Unsupported"),
     ("lttng-ust-2.8", "lttng-tools-2.12", "Unsupported"),
+    ("lttng-ust-2.8", "lttng-tools-2.13", "Unsupported"),
     ("lttng-ust-2.9", "lttng-tools-2.7", "Unsupported"),
     ("lttng-ust-2.9", "lttng-tools-2.8", "Unsupported"),
     ("lttng-ust-2.9", "lttng-tools-2.9", "Success"),
     ("lttng-ust-2.9", "lttng-tools-2.10", "Success"),
     ("lttng-ust-2.9", "lttng-tools-2.11", "Unsupported"),
     ("lttng-ust-2.9", "lttng-tools-2.12", "Unsupported"),
+    ("lttng-ust-2.9", "lttng-tools-2.13", "Unsupported"),
     ("lttng-ust-2.10", "lttng-tools-2.7", "Unsupported"),
     ("lttng-ust-2.10", "lttng-tools-2.8", "Unsupported"),
     ("lttng-ust-2.10", "lttng-tools-2.9", "Success"),
     ("lttng-ust-2.10", "lttng-tools-2.10", "Success"),
     ("lttng-ust-2.10", "lttng-tools-2.11", "Unsupported"),
     ("lttng-ust-2.10", "lttng-tools-2.12", "Unsupported"),
+    ("lttng-ust-2.10", "lttng-tools-2.13", "Unsupported"),
     ("lttng-ust-2.11", "lttng-tools-2.7", "Unsupported"),
     ("lttng-ust-2.11", "lttng-tools-2.8", "Unsupported"),
     ("lttng-ust-2.11", "lttng-tools-2.9", "Unsupported"),
     ("lttng-ust-2.11", "lttng-tools-2.10", "Unsupported"),
     ("lttng-ust-2.11", "lttng-tools-2.11", "Success"),
     ("lttng-ust-2.11", "lttng-tools-2.12", "Success"),
+    ("lttng-ust-2.11", "lttng-tools-2.13", "Unsupported"),
     ("lttng-ust-2.12", "lttng-tools-2.7", "Unsupported"),
     ("lttng-ust-2.12", "lttng-tools-2.8", "Unsupported"),
     ("lttng-ust-2.12", "lttng-tools-2.9", "Unsupported"),
     ("lttng-ust-2.12", "lttng-tools-2.10", "Unsupported"),
-    ("lttng-ust-2.12", "lttng-tools-2.11", "Success"),
-    ("lttng-ust-2.12", "lttng-tools-2.12", "Success"),
+    ("lttng-ust-2.12", "lttng-tools-2.11", "Unsupported"),
+    ("lttng-ust-2.12", "lttng-tools-2.12", "Unsupported"),
+    ("lttng-ust-2.12", "lttng-tools-2.13", "Unsupported"),
+    ("lttng-ust-2.13", "lttng-tools-2.7", "Unsupported"),
+    ("lttng-ust-2.13", "lttng-tools-2.8", "Unsupported"),
+    ("lttng-ust-2.13", "lttng-tools-2.9", "Unsupported"),
+    ("lttng-ust-2.13", "lttng-tools-2.10", "Unsupported"),
+    ("lttng-ust-2.13", "lttng-tools-2.11", "Unsupported"),
+    ("lttng-ust-2.13", "lttng-tools-2.12", "Unsupported"),
+    ("lttng-ust-2.13", "lttng-tools-2.13", "Success"),
 ]
 
 
@@ -123,6 +137,7 @@ test_matrix_regen_statedump = [
     ("lttng-ust-2.11", "lttng-tools-2.12", True),
     ("lttng-ust-2.12", "lttng-tools-2.11", True),
     ("lttng-ust-2.12", "lttng-tools-2.12", True),
+    ("lttng-ust-2.13", "lttng-tools-2.13", True),
 ]
 
 """
@@ -139,6 +154,7 @@ test_matrix_starglobing_enabler = [
     ("lttng-ust-2.11", "lttng-tools-2.12", "Supported"),
     ("lttng-ust-2.12", "lttng-tools-2.11", "Supported"),
     ("lttng-ust-2.12", "lttng-tools-2.12", "Supported"),
+    ("lttng-ust-2.13", "lttng-tools-2.13", "Supported"),
 ]
 
 runtime_matrix_tracing_available = Settings.generate_runtime_test_matrix(

@@ -39,16 +39,17 @@ Note: actual testing is limited by lttng-ust and lttng-tools abi/api.
 
 +----------------------------------------------------------------------------------+
 |             LTTng UST Python agent protocol vs LTTng session daemon              |
-+--------------------------+------------+------------+------------+----------------+------------+------------+
-| LTTng UST Java/ LTTng Tools  | 2.7 (1.0)  | 2.8 (2.0)  | 2.9 (2.0)  | 2.10 (2.0) | 2.11 (2.0) | 2.12 (2.0) |
-+--------------------------+------------+------------+------------+----------------+------------+------------+
-| 2.7                          | NA         | NA         | NA         | NA         | NA         | NA         |
-| 2.8 (2.0)                    | TU         | FC         | BC         | BC         | TU         | TU         |
-| 2.9 (2.0)                    | TU         | BC         | FC         | BC         | TU         | TU         |
-| 2.10 (2.0)                   | TU         | BC         | BC         | FC         | TU         | TU         |
-| 2.11 (2.0)                   | TU         | TU         | TU         | TU         | FC         | BC         |
-| 2.12 (2.0)                   | TU         | TU         | TU         | TU         | BC         | FC         |
-+--------------------------+------------+------------+------------+----------------+------------+------------+
++--------------------------+------------+------------+------------+----------------+------------+------------+------------+
+| LTTng UST Java/ LTTng Tools  | 2.7 (1.0)  | 2.8 (2.0)  | 2.9 (2.0)  | 2.10 (2.0) | 2.11 (2.0) | 2.12 (2.0) | 2.13 (2.0) |
++--------------------------+------------+------------+------------+----------------+------------+------------+------------+
+| 2.7                          | NA         | NA         | NA         | NA         | NA         | NA         | NA         |
+| 2.8 (2.0)                    | TU         | FC         | BC         | BC         | TU         | TU         | TU         |
+| 2.9 (2.0)                    | TU         | BC         | FC         | BC         | TU         | TU         | TU         |
+| 2.10 (2.0)                   | TU         | BC         | BC         | FC         | TU         | TU         | TU         |
+| 2.11 (2.0)                   | TU         | TU         | TU         | TU         | FC         | BC         | TU         |
+| 2.12 (2.0)                   | TU         | TU         | TU         | TU         | BC         | FC         | TU         |
+| 2.13 (2.0)                   | TU         | TU         | TU         | TU         | TU         | TU         | FC         |
++--------------------------+------------+------------+------------+----------------+------------+------------+------------+
 
 """
 
@@ -93,20 +94,20 @@ test_matrix_tracing_available = [
     ("lttng-ust-2.11", "lttng-tools-2.10", False),
     ("lttng-ust-2.11", "lttng-tools-2.11", True),
     ("lttng-ust-2.11", "lttng-tools-2.12", True),
-    ("lttng-ust-2.11", "lttng-tools-2.13", True),
+    ("lttng-ust-2.11", "lttng-tools-2.13", False),
     ("lttng-ust-2.12", "lttng-tools-2.7", False),
     ("lttng-ust-2.12", "lttng-tools-2.8", False),
     ("lttng-ust-2.12", "lttng-tools-2.9", False),
     ("lttng-ust-2.12", "lttng-tools-2.10", False),
     ("lttng-ust-2.12", "lttng-tools-2.11", True),
     ("lttng-ust-2.12", "lttng-tools-2.12", True),
-    ("lttng-ust-2.12", "lttng-tools-2.13", True),
+    ("lttng-ust-2.12", "lttng-tools-2.13", False),
     ("lttng-ust-2.13", "lttng-tools-2.7", False),
     ("lttng-ust-2.13", "lttng-tools-2.8", False),
     ("lttng-ust-2.13", "lttng-tools-2.9", False),
     ("lttng-ust-2.13", "lttng-tools-2.10", False),
-    ("lttng-ust-2.13", "lttng-tools-2.11", True),
-    ("lttng-ust-2.13", "lttng-tools-2.12", True),
+    ("lttng-ust-2.13", "lttng-tools-2.11", False),
+    ("lttng-ust-2.13", "lttng-tools-2.12", False),
     ("lttng-ust-2.13", "lttng-tools-2.13", True),
 
 ]
