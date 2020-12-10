@@ -91,12 +91,14 @@ test_matrix_base_app_tracing_available = [
     ("lttng-ust-2.12", "lttng-tools-2.11", True),
     ("lttng-ust-2.12", "lttng-tools-2.12", True),
     ("lttng-ust-2.12", "lttng-tools-2.13", True),
-    ("lttng-ust-2.13", "lttng-tools-2.7", True),
-    ("lttng-ust-2.13", "lttng-tools-2.8", True),
-    ("lttng-ust-2.13", "lttng-tools-2.9", True),
-    ("lttng-ust-2.13", "lttng-tools-2.10", True),
-    ("lttng-ust-2.13", "lttng-tools-2.11", True),
-    ("lttng-ust-2.13", "lttng-tools-2.12", True),
+    # For ust 2.13 the provider version is bumped from 1.0 to 2.0
+    # See commit 04f0b55a6bafe380a1b9ce93267d5a7da963cbf9 in lttng-ust tree.
+    ("lttng-ust-2.13", "lttng-tools-2.7", False),
+    ("lttng-ust-2.13", "lttng-tools-2.8", False),
+    ("lttng-ust-2.13", "lttng-tools-2.9", False),
+    ("lttng-ust-2.13", "lttng-tools-2.10", False),
+    ("lttng-ust-2.13", "lttng-tools-2.11", False),
+    ("lttng-ust-2.13", "lttng-tools-2.12", False),
     ("lttng-ust-2.13", "lttng-tools-2.13", True),
 
 ]
@@ -107,13 +109,16 @@ runtime_matrix_base_app_tracing_available = Settings.generate_runtime_test_matri
 
 
 @pytest.mark.parametrize(
-    "ust_label,tools_label,success", runtime_matrix_base_app_tracing_available
+    "ust_label,tools_label,tracing_available", runtime_matrix_base_app_tracing_available
 )
 def test_ust_app_tools_update_tracing_available(
-    tmpdir, ust_label, tools_label, success
+    tmpdir, ust_label, tools_label, tracing_available
 ):
 
-    nb_events = 100
+    if tracing_available:
+        nb_events = 100
+    else:
+        nb_events = 0
 
     # Prepare environment
     ust = ProjectFactory.get_precook(ust_label)
@@ -163,9 +168,5 @@ def test_ust_app_tools_update_tracing_available(
             pytest.fail("Sessiond return code")
 
         cmd = "babeltrace {}".format(trace_path)
-        if success:
-            cp_process, cp_out, cp_err = runtime_tools.run(cmd)
-            assert utils.line_count(cp_out) == nb_events
-        else:
-            with pytest.raises(subprocess.CalledProcessError):
-                cp_process, cp_out, cp_err = runtime_tools.run(cmd)
+        cp_process, cp_out, cp_err = runtime_tools.run(cmd)
+        assert utils.line_count(cp_out) == nb_events

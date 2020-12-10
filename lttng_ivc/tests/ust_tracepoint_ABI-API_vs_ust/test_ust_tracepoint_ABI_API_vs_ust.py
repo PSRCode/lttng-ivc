@@ -73,6 +73,7 @@ that we use pre_cooked one.
 fail_provider = "fail_on_provider"
 fail_app = "fail_on_app"
 success = "success"
+tracing_unavailable = "tracing_unavailable"
 
 test_matrix_enum = [
     ("lttng-ust-2.7", "lttng-tools-2.7", fail_provider),
@@ -120,9 +121,9 @@ test_matrix_enum = [
     ("lttng-ust-2.13", "lttng-tools-2.7", fail_provider),
     ("lttng-ust-2.13", "lttng-tools-2.8", success),
     ("lttng-ust-2.13", "lttng-tools-2.9", success),
-    ("lttng-ust-2.13", "lttng-tools-2.10", success),
-    ("lttng-ust-2.13", "lttng-tools-2.11", success),
-    ("lttng-ust-2.13", "lttng-tools-2.12", success),
+    ("lttng-ust-2.13", "lttng-tools-2.10", tracing_unavailable),
+    ("lttng-ust-2.13", "lttng-tools-2.11", tracing_unavailable),
+    ("lttng-ust-2.13", "lttng-tools-2.12", tracing_unavailable),
     ("lttng-ust-2.13", "lttng-tools-2.13", success),
 
 ]
@@ -172,9 +173,9 @@ test_matrix_base = [
     ("lttng-ust-2.13", "lttng-tools-2.7", success),
     ("lttng-ust-2.13", "lttng-tools-2.8", success),
     ("lttng-ust-2.13", "lttng-tools-2.9", success),
-    ("lttng-ust-2.13", "lttng-tools-2.10", success),
-    ("lttng-ust-2.13", "lttng-tools-2.11", success),
-    ("lttng-ust-2.13", "lttng-tools-2.12", success),
+    ("lttng-ust-2.13", "lttng-tools-2.10", tracing_unavailable),
+    ("lttng-ust-2.13", "lttng-tools-2.11", tracing_unavailable),
+    ("lttng-ust-2.13", "lttng-tools-2.12", tracing_unavailable),
     ("lttng-ust-2.13", "lttng-tools-2.13", success),
 
 ]
@@ -187,7 +188,11 @@ runtime_matrix_base = Settings.generate_runtime_test_matrix(test_matrix_base, [0
 def test_ust_tracepoint_abi_api_vs_ust_enum(tmpdir, ust_label, tools_label, scenario):
 
     nb_loop = 100
-    nb_expected_events = 200
+
+    if scenario != tracing_unavailable:
+        nb_expected_events = 200
+    else:
+        nb_expected_events = 0
 
     # Prepare environment
     ust = ProjectFactory.get_precook(ust_label)
@@ -256,7 +261,11 @@ def test_ust_tracepoint_abi_api_vs_ust_enum(tmpdir, ust_label, tools_label, scen
 def test_ust_tracepoint_abi_api_vs_ust_base(tmpdir, ust_label, tools_label, scenario):
 
     nb_loop = 100
-    nb_expected_events = 200
+    if scenario != tracing_unavailable:
+        nb_expected_events = 200
+    else:
+        nb_expected_events = 0
+
 
     # Prepare environment
     ust = ProjectFactory.get_precook(ust_label)
