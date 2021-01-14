@@ -20,11 +20,11 @@ lttng-tools:
           ref: stable-2.11
           precook_deps: [lttng-ust-2.11, urcu-latest]
         - marker: lttng-tools-2.12
-          url: https://github.com/lttng/lttng-tools
+          url: https://github.com/psrcode/lttng-tools
           ref: stable-2.12
           precook_deps: [lttng-ust-2.12, urcu-latest]
         - marker: lttng-tools-2.13
-          url: https://github.com/lttng/lttng-tools
+          url: https://github.com/psrcode/lttng-tools
           ref: master
           precook_deps: [lttng-ust-2.13, urcu-latest]
 
